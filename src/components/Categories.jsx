@@ -1,3 +1,11 @@
+import Header from './Header';
+
 export default function Categories() {
-  return <h1>Categories</h1>;
+  return (
+    <>
+      <Header />
+      <h2>Categories</h2>
+      ;
+    </>
+  );
 }
