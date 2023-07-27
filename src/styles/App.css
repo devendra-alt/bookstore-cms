@@ -1,0 +1,220 @@
+:root {
+  --primart-color: #0290ff;
+  --mediam-blue: #307bbe;
+  --white-three: #e8e8e8;
+  --white-two: #fff;
+  --pale-grey: #f5f6fa;
+  --grey: #8f8f8f;
+}
+
+.montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.roboto-slab {
+  font-family: 'Roboto Slab', serif;
+}
+
+/* header section */
+
+.header-el {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.4rem 0;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5rem;
+}
+
+.title {
+  font-size: 2.8rem;
+  color: var(--primart-color);
+}
+
+.nav-item {
+  display: inline-block;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  margin-right: 2rem;
+}
+
+.nav-item:last-child {
+  margin-right: 0;
+}
+
+.nav-bar a.active {
+  color: #121212;
+}
+
+.nav-link:link,
+.nav-link:visited {
+  color: var(--grey);
+  text-decoration: none;
+}
+
+.nav-link:hover,
+.nav-link:active {
+  color: #121212;
+}
+
+.person-profile-container {
+  border: 0.1rem solid var(--white-three);
+  border-radius: 50%;
+  width: 3.8rem;
+  height: 3.8rem;
+  background-image: url(../assets/icons8-person-64.png);
+  background-size: 65%;
+  background-repeat: no-repeat;
+  background-position: 50% 20%;
+}
+
+/* header end */
+
+/* book section */
+
+.book-list {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.book-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: 0.1rem solid var(--white-three);
+  padding: 2.2rem;
+  margin: 3rem 0;
+}
+
+/* book info */
+
+.book-category {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--grey);
+}
+
+.book-title {
+  padding: 0.3rem 0;
+}
+
+.action-links-btns {
+  padding-top: 1.6rem;
+}
+
+.action-link {
+  color: var(--mediam-blue);
+  font-size: 1.3rem;
+  text-decoration: none;
+}
+
+.action-link-btns-item {
+  padding: 1rem;
+}
+
+.action-link-btns-item:first-child {
+  padding-left: 0;
+}
+
+/* completed-state */
+
+.completed-state {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 3rem;
+}
+
+.completed-state-figure {
+  width: 8rem;
+}
+
+.completed-state-value {
+  font-size: 3.2rem;
+  color: #121212;
+  font-weight: 400;
+}
+
+.completed-state-value-title {
+  font-size: 1.6rem;
+  color: var(--grey);
+}
+
+/* completed-state end  */
+
+/* chapter info */
+
+.chapter-info {
+  padding: 0 3rem;
+}
+
+.current-chapter-title {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  color: var(--grey);
+}
+
+.current-chapter-title-value {
+  font-size: 1.4rem;
+  padding: 0.8rem 0;
+  font-weight: 300;
+}
+
+.update-progress-btn {
+  background-color: var(--primart-color);
+  border: none;
+  border-radius: 0.3rem;
+  color: var(--white-two);
+  padding: 0.9rem 1.2rem;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+/* chapter info end */
+
+/* add book form */
+
+.add-book-form {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.add-book-form-title {
+  grid-area: title;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  color: var(--grey);
+}
+
+.add-book-form-input {
+  outline: none;
+  height: 2.8rem;
+}
+
+.book-title-input {
+  width: 55%;
+  margin-right: 2rem;
+}
+
+.book-author-input {
+  width: 25%;
+  margin-right: 2rem;
+}
+
+.add-book-btn {
+  width: 16%;
+  height: 2.8rem;
+  background-color: var(--primart-color);
+  color: var(--white-two);
+  border: none;
+  border-radius: 0.3rem;
+}
