@@ -100,6 +100,10 @@
   font-weight: 700;
   font-size: 1.1rem;
   color: var(--grey);
+  cursor: pointer;
+  outline: none;
+  background: none;
+  border: none;
 }
 
 .book-title {
@@ -114,6 +118,10 @@
   color: var(--mediam-blue);
   font-size: 1.3rem;
   text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
 }
 
 .action-link-btns-item {
@@ -185,7 +193,7 @@
 
 .add-book-form {
   width: 80%;
-  margin: 0 auto;
+  margin: 3rem auto;
 }
 
 .add-book-form-title {
