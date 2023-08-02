@@ -3,7 +3,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { remove } from '../redux/books/booksSlice';
+import { filterByCategory, remove } from '../redux/books/booksSlice';
 
 function Book({ book }) {
   const circularProgressBarStyle = buildStyles({
@@ -19,10 +19,21 @@ function Book({ book }) {
     dispatch(remove(book.item_id));
   };
 
+  const handleCategoryClick = (e) => {
+    e.preventDefault();
+    dispatch(filterByCategory(book.category));
+  };
+
   return (
     <li className="book-item">
       <div className="book-info roboto-slab">
-        <span className="book-category montserrat">{book.category}</span>
+        <button
+          className="book-category montserrat"
+          type="button"
+          onClick={handleCategoryClick}
+        >
+          {book.category}
+        </button>
         <h2 className="book-title"> {book.title}</h2>
         <span>
           <Link className="action-link" to="/">
