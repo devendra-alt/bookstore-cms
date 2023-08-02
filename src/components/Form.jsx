@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { add } from '../redux/books/booksSlice';
 import { v4 as uuidv4 } from 'uuid';
+import { add } from '../redux/books/booksSlice';
 
 export default function Form() {
   const [state, setBook] = useState({
@@ -22,7 +22,7 @@ export default function Form() {
   function handleAddBook(event) {
     event.preventDefault();
     if (state.author && state.title) {
-      let newBook = {
+      const newBook = {
         item_id: uuidv4(),
         title: state.title,
         author: state.author,

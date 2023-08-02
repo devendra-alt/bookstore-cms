@@ -23,20 +23,20 @@ const initialState = {
   ],
 };
 
-export const booksSlice = createSlice({
+const booksSlice = createSlice({
   name: 'books',
   initialState,
   reducers: {
     add: (state, action) => {
-      let newBook = action.payload;
+      const newBook = action.payload;
       state.value.push(newBook);
     },
     remove: (state, action) => {
-      let id = action.payload;
+      const id = action.payload;
       state.value = state.value.filter((book) => book.item_id !== id);
     },
     filterByCategory: (state, action) => {
-      let category = action.payload;
+      const category = action.payload;
       state.value = state.value.filter((book) => book.category === category);
     },
   },
