@@ -27,13 +27,11 @@ function Book({ book }) {
   return (
     <li className="book-item">
       <div className="book-info roboto-slab">
-        <button
+        <Button
           className="book-category montserrat"
-          type="button"
-          onClick={handleCategoryClick}
-        >
-          {book.category}
-        </button>
+          clickEvent={handleCategoryClick}
+          InnerText={book.category}
+        />
         <h2 className="book-title">
           {' '}
           {book.title}
