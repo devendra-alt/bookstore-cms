@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { add } from '../redux/books/booksSlice';
+import Button from './Button';
 
 export default function Form() {
   const [state, setBook] = useState({
@@ -19,7 +20,7 @@ export default function Form() {
     });
   }
 
-  function handleAddBook(event) {
+  const handleAddBook = (event) => {
     event.preventDefault();
     if (state.author && state.title) {
       const newBook = {
@@ -34,7 +35,7 @@ export default function Form() {
       });
       dispatch(add(newBook));
     }
-  }
+  };
 
   return (
     <form className="add-book-form montserrat">
@@ -49,18 +50,17 @@ export default function Form() {
       />
       <input
         type="text"
+        value={state.author}
         name="author"
         onChange={handleChange}
         className="add-book-form-input book-author-input"
         required
       />
-      <button
-        type="submit"
+      <Button
         className="add-book-btn roboto-slab"
-        onClick={handleAddBook}
-      >
-        Add Book
-      </button>
+        clickEvent={handleAddBook}
+        InnerText="Add Book"
+      />
     </form>
   );
 }
