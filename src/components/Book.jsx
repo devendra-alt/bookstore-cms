@@ -33,7 +33,10 @@ function Book({ book }) {
           clickEvent={handleCategoryClick}
           InnerText={book.category}
         />
-        <h2 className="book-title"> {book.title}</h2>
+        <h2 className="book-title">
+          {' '}
+          {book.title}
+        </h2>
         <span>
           <Link className="action-link" to="/">
             {book.author}
@@ -72,7 +75,9 @@ function Book({ book }) {
         </div>
         <div>
           <h4 className="completed-state-value">
-            {book.completed ? book.completed : '7'} %
+            {book.completed ? book.completed : '7'}
+            {' '}
+            %
           </h4>
           <p className="completed-state-value-title">completed</p>
         </div>
@@ -80,7 +85,9 @@ function Book({ book }) {
       <div className="chapter-info roboto-slab">
         <p className="current-chapter-title">current chapter</p>
         <p className="current-chapter-title-value">
-          Chapter {book.currentChapter}
+          Chapter
+          {' '}
+          {book.currentChapter}
         </p>
         <button className="update-progress-btn" type="button">
           update progress
