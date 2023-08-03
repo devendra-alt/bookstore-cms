@@ -26,6 +26,14 @@ export const addNewBook = createAsyncThunk('books/addNewBook', async (data) => {
   }
 });
 
+export const removeBook = createAsyncThunk('books/removeBook', async (data) => {
+  try {
+    const response = await axios.delete(`${API_ENDPOINT}/${data}`);
+    return response.data;
+  } catch (error) {
+    throw Error(error);
+  }
+});
 
 const initialState = {
   value: [
