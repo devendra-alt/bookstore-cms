@@ -1,4 +1,9 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
+
+const API_ENDPOINT =
+  'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/QCdnPL3vrJyR2h0omuy5/books';
+
 
 const initialState = {
   value: [
