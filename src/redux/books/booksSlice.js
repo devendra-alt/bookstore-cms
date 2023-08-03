@@ -17,6 +17,15 @@ export const fetchBooks = createAsyncThunk('books/fetchBooks', async () => {
   }
 });
 
+export const addNewBook = createAsyncThunk('books/addNewBook', async (data) => {
+  try {
+    const response = await axios.post(API_ENDPOINT, data);
+    return response.data;
+  } catch (error) {
+    throw Error(error);
+  }
+});
+
 
 const initialState = {
   value: [
