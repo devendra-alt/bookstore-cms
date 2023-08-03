@@ -2,6 +2,9 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { filterByCategory, remove } from '../redux/books/booksSlice';
+import Button from './Button';
 
 function Book({ book }) {
   const circularProgressBarStyle = buildStyles({
@@ -9,10 +12,27 @@ function Book({ book }) {
     pathTransitionDuration: '2',
     pathColor: '#0290ff',
   });
+
+  const dispatch = useDispatch();
+
+  const handleRemove = (e) => {
+    e.preventDefault();
+    dispatch(remove(book.item_id));
+  };
+
+  const handleCategoryClick = (e) => {
+    e.preventDefault();
+    dispatch(filterByCategory(book.category));
+  };
+
   return (
     <li className="book-item">
       <div className="book-info roboto-slab">
-        <span className="book-category montserrat">{book.category}</span>
+        <Button
+          className="book-category montserrat"
+          clickEvent={handleCategoryClick}
+          InnerText={book.category}
+        />
         <h2 className="book-title">
           {' '}
           {book.title}
@@ -24,28 +44,38 @@ function Book({ book }) {
         </span>
         <div className="action-links-btns">
           <nav>
-            <Link className="action-link action-link-btns-item" to="/">
+            <button
+              type="button"
+              className="action-link action-link-btns-item"
+              to="/"
+            >
               Comments
-            </Link>
-            <Link className="action-link action-link-btns-item" to="/">
-              Remove
-            </Link>
-            <Link className="action-link action-link-btns-item" to="/">
+            </button>
+            <Button
+              className="action-link action-link-btns-item"
+              clickEvent={handleRemove}
+              InnerText="Remove"
+            />
+            <button
+              type="button"
+              className="action-link action-link-btns-item"
+              to="/"
+            >
               Edit
-            </Link>
+            </button>
           </nav>
         </div>
       </div>
       <div className="completed-state montserrat">
         <div className="completed-state-figure">
           <CircularProgressbar
-            value={book.completed}
+            value={book.completed ? book.completed : '7'}
             styles={circularProgressBarStyle}
           />
         </div>
         <div>
           <h4 className="completed-state-value">
-            {book.completed}
+            {book.completed ? book.completed : '7'}
             {' '}
             %
           </h4>
@@ -68,7 +98,14 @@ function Book({ book }) {
 }
 
 Book.propTypes = {
-  book: PropTypes.shape().isRequired,
+  book: PropTypes.shape({
+    item_id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    completed: PropTypes.string,
+    currentChapter: PropTypes.string,
+  }).isRequired,
 };
 
 export default Book;

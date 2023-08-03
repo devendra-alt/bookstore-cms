@@ -5,7 +5,7 @@ const initialState = {
   status: 'Under construction',
 };
 
-export const categoriesSlice = createSlice({
+const categoriesSlice = createSlice({
   name: 'categories',
   initialState,
   reducers: {
