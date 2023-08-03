@@ -4,6 +4,19 @@ import axios from 'axios';
 const API_ENDPOINT =
   'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/QCdnPL3vrJyR2h0omuy5/books';
 
+export const fetchBooks = createAsyncThunk('books/fetchBooks', async () => {
+  try {
+    const response = await axios.get(API_ENDPOINT);
+    const books = Object.keys(response.data).map((key) => ({
+      item_id: key,
+      ...response.data[key][0],
+    }));
+    return books;
+  } catch (error) {
+    throw Error(error);
+  }
+});
+
 
 const initialState = {
   value: [
