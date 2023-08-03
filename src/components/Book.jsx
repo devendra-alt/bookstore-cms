@@ -3,7 +3,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { filterByCategory, remove } from '../redux/books/booksSlice';
+import { filterByCategory, removeBook } from '../redux/books/booksSlice';
 import Button from './Button';
 
 function Book({ book }) {
@@ -17,7 +17,7 @@ function Book({ book }) {
 
   const handleRemove = (e) => {
     e.preventDefault();
-    dispatch(remove(book.item_id));
+    dispatch(removeBook(book.item_id));
   };
 
   const handleCategoryClick = (e) => {
@@ -33,10 +33,7 @@ function Book({ book }) {
           clickEvent={handleCategoryClick}
           InnerText={book.category}
         />
-        <h2 className="book-title">
-          {' '}
-          {book.title}
-        </h2>
+        <h2 className="book-title"> {book.title}</h2>
         <span>
           <Link className="action-link" to="/">
             {book.author}
@@ -75,9 +72,7 @@ function Book({ book }) {
         </div>
         <div>
           <h4 className="completed-state-value">
-            {book.completed ? book.completed : '7'}
-            {' '}
-            %
+            {book.completed ? book.completed : '7'} %
           </h4>
           <p className="completed-state-value-title">completed</p>
         </div>
@@ -85,9 +80,7 @@ function Book({ book }) {
       <div className="chapter-info roboto-slab">
         <p className="current-chapter-title">current chapter</p>
         <p className="current-chapter-title-value">
-          Chapter
-          {' '}
-          {book.currentChapter}
+          Chapter {book.currentChapter}
         </p>
         <button className="update-progress-btn" type="button">
           update progress
