@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { filterByCategory, remove } from '../redux/books/booksSlice';
+import Button from './Button';
 
 function Book({ book }) {
   const circularProgressBarStyle = buildStyles({
