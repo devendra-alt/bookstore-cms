@@ -15,26 +15,22 @@
   font-family: 'Roboto Slab', serif;
 }
 
-/* header section */
-
 .header-el {
-  width: 80%;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.4rem 0;
+  padding: 1.4rem 2rem;
 }
 
 .header-content {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 5rem;
 }
 
 .title {
-  font-size: 2.8rem;
+  font-size: 1.8rem;
   color: var(--primart-color);
 }
 
@@ -74,10 +70,6 @@
   background-repeat: no-repeat;
   background-position: 50% 20%;
 }
-
-/* header end */
-
-/* book section */
 
 .book-list {
   width: 80%;
@@ -232,4 +224,26 @@
   letter-spacing: 1.1px;
   outline: none;
   cursor: pointer;
+}
+
+@media screen and (min-width: 764px) {
+  /* header section */
+
+  .header-el {
+    width: 80%;
+  }
+
+  .header-content {
+    flex-direction: row;
+    align-items: center;
+    gap: 5rem;
+  }
+
+  .title {
+    font-size: 2.8rem;
+  }
+
+  /* header end */
+
+  /* book section */
 }
