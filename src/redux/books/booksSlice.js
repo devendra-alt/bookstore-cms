@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const API_ENDPOINT = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/QCdnPL3vrJyR2h0omuy5/books';
+const API_ENDPOINT =
+  'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/QCdnPL3vrJyR2h0omuy5/books';
 
 export const fetchBooks = createAsyncThunk('books/fetchBooks', async () => {
   try {
@@ -19,7 +20,7 @@ export const fetchBooks = createAsyncThunk('books/fetchBooks', async () => {
 export const addNewBook = createAsyncThunk('books/addNewBook', async (data) => {
   try {
     const response = await axios.post(API_ENDPOINT, data);
-    return response.data;
+    return [response.data, data];
   } catch (error) {
     throw Error(error);
   }
@@ -28,7 +29,7 @@ export const addNewBook = createAsyncThunk('books/addNewBook', async (data) => {
 export const removeBook = createAsyncThunk('books/removeBook', async (data) => {
   try {
     const response = await axios.delete(`${API_ENDPOINT}/${data}`);
-    return response.data;
+    return [response.data, data];
   } catch (error) {
     throw Error(error);
   }
@@ -63,7 +64,8 @@ const booksSlice = createSlice({
       .addCase(addNewBook.pending, (state) => {
         state.loading = 'pending';
       })
-      .addCase(addNewBook.fulfilled, (state) => {
+      .addCase(addNewBook.fulfilled, (state, action) => {
+        state.value.push(action.payload[1]);
         state.loading = 'succeded';
       })
       .addCase(addNewBook.rejected, (state) => {
@@ -72,7 +74,9 @@ const booksSlice = createSlice({
       .addCase(removeBook.pending, (state) => {
         state.loading = 'pending';
       })
-      .addCase(removeBook.fulfilled, (state) => {
+      .addCase(removeBook.fulfilled, (state, action) => {
+        let itemId = action.payload[1];
+        state.value = state.value.filter((item) => item.item_id !== itemId);
         state.loading = 'succeded';
       })
       .addCase(removeBook.rejected, (state) => {
